@@ -49,7 +49,7 @@
             <span>${product.pack}</span>
             <span>${product.finish}</span>
           </div>
-          <a class="text-link" href="product.html?slug=${product.slug}">Open product page</a>
+          <a class="text-link" href="product.html?slug=${product.slug}">View product profile</a>
         </div>
       </article>
     `;
@@ -149,8 +149,8 @@
 
       <section class="product-layout">
         <article class="detail-panel reveal">
-          <p class="eyebrow">Application Story</p>
-          <h2>Where this product fits</h2>
+          <p class="eyebrow">Design Intent</p>
+          <h2>Where this finish belongs</h2>
           <p>${product.spotlight}</p>
           <ul class="detail-list">
             ${product.features.map((feature) => `<li>${feature}</li>`).join("")}
@@ -158,7 +158,7 @@
         </article>
 
         <article class="detail-panel detail-panel--dark reveal">
-          <p class="eyebrow">Key Specs</p>
+          <p class="eyebrow">Specification Dossier</p>
           <h2>Technical snapshot</h2>
           <div class="spec-grid">
             <div><span>Pack Range</span><strong>${product.pack}</strong></div>
@@ -173,7 +173,7 @@
 
       <section class="section-block process-strip reveal">
         <div>
-          <p class="eyebrow">Use Case</p>
+          <p class="eyebrow">Application Ritual</p>
           <h2>${product.processTitle}</h2>
         </div>
         <ol class="process-list">
