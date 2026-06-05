@@ -56,20 +56,57 @@
   }
 
   function renderHomePage() {
-    const heroMosaic = document.getElementById("heroMosaic");
-    const featuredProducts = document.getElementById("featuredProducts");
+    const heroSignatureProduct = document.getElementById("heroSignatureProduct");
+    const heroRibbon = document.getElementById("heroRibbon");
+    const featuredShowcase = document.getElementById("featuredShowcase");
+    const signatureProduct = productData.find((product) => product.slug === "interior-emulsion") || productData[0];
 
-    if (heroMosaic) {
-      heroMosaic.innerHTML = productData.slice(0, 3).map((product) => `
-        <article class="mosaic-card">
+    if (heroSignatureProduct) {
+      heroSignatureProduct.innerHTML = `
+        <article class="signature-card">
+          <div class="signature-card__media">
+            <img src="${signatureProduct.image}" alt="${signatureProduct.name}">
+          </div>
+          <div class="signature-card__body">
+            <span class="pill">${signatureProduct.category}</span>
+            <h3>${signatureProduct.name}</h3>
+            <p>${signatureProduct.shortCopy}</p>
+            <a class="text-link" href="product.html?slug=${signatureProduct.slug}">Enter signature profile</a>
+          </div>
+        </article>
+      `;
+    }
+
+    if (heroRibbon) {
+      heroRibbon.innerHTML = productData.slice(0, 3).map((product) => `
+        <article class="ribbon-card">
           <img src="${product.image}" alt="${product.name}">
-          <span>${product.name}</span>
+          <div>
+            <span>${product.name}</span>
+            <small>${product.finish}</small>
+          </div>
         </article>
       `).join("");
     }
 
-    if (featuredProducts) {
-      featuredProducts.innerHTML = productData.slice(0, 4).map((product) => productCardMarkup(product, true)).join("");
+    if (featuredShowcase) {
+      featuredShowcase.innerHTML = productData.slice(0, 3).map((product, index) => `
+        <article class="showcase-card showcase-card--${index === 0 ? "primary" : "secondary"}">
+          <a class="showcase-card__media" href="product.html?slug=${product.slug}">
+            <img src="${product.image}" alt="${product.name}">
+          </a>
+          <div class="showcase-card__body">
+            <span class="pill">${product.category}</span>
+            <h3>${product.name}</h3>
+            <p>${product.shortCopy}</p>
+            <div class="catalog-meta">
+              <span>${product.pack}</span>
+              <span>${product.finish}</span>
+            </div>
+            <a class="text-link" href="product.html?slug=${product.slug}">View product profile</a>
+          </div>
+        </article>
+      `).join("");
     }
   }
 
