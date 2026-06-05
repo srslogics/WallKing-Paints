@@ -4,62 +4,97 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products | Wall King Paints</title>
-  <meta name="description" content="Browse Wall King Paints products across interior, exterior, and surface preparation categories.">
+  <meta name="description" content="Browse Wall King Paints interior, exterior, and surface preparation products.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700;6..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="products">
-  <div class="site-noise" aria-hidden="true"></div>
-  <div class="page-frame">
-    <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Wall King home">
-        <span class="brand__mark">WK</span>
-        <span class="brand__text">
-          <strong>Wall King</strong>
-          <small>Paints & Coatings</small>
-        </span>
-      </a>
-
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
-        Menu
-      </button>
-
-      <nav class="site-nav" id="siteNav">
-        <a href="index.html" data-nav="home">Home</a>
-        <a href="products.html" data-nav="products">Products</a>
-        <a href="about.html" data-nav="about">About</a>
-        <a href="contact.html" data-nav="contact">Contact</a>
-      </nav>
-
-      <a class="header-cta" href="contact.html">Sales Enquiry</a>
+  <div class="page-shell">
+    <header class="topbar">
+      <p>Compare finishes, prep systems, and practical use cases.</p>
+      <div class="topbar__actions">
+        <a href="tel:+917714916266">Call us</a>
+        <a href="contact.html">Dealer support</a>
+      </div>
     </header>
 
-    <main>
-      <section class="page-hero reveal">
-        <p class="eyebrow">Signature Collections</p>
-        <h1>Every product now sits inside a more polished, luxury-focused catalogue.</h1>
-        <p class="lead">
-          This page is built like a proper collection view, so the range feels curated, easier to scan,
-          and more premium in how it introduces each finish.
-        </p>
-      </section>
+    <div class="page-frame">
+      <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Wall King home">
+          <span class="brand__mark">WK</span>
+          <span class="brand__text">
+            <strong>Wall King</strong>
+            <small>Paints & Coatings</small>
+          </span>
+        </a>
 
-      <section class="section-block reveal">
-        <div class="filter-bar">
-          <div class="filter-group">
-            <button class="filter-chip is-active" type="button" data-filter="all">All Products</button>
-            <button class="filter-chip" type="button" data-filter="interior">Interior</button>
-            <button class="filter-chip" type="button" data-filter="exterior">Exterior</button>
-            <button class="filter-chip" type="button" data-filter="preparation">Preparation</button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+          Menu
+        </button>
+
+        <nav class="site-nav" id="siteNav">
+          <a href="index.html" data-nav="home">Home</a>
+          <a href="products.html" data-nav="products">Products</a>
+          <a href="about.html" data-nav="about">About</a>
+          <a href="contact.html" data-nav="contact">Contact</a>
+        </nav>
+
+        <a class="header-cta" href="contact.html">Talk to an expert</a>
+      </header>
+
+      <main>
+        <section class="page-hero reveal">
+          <p class="eyebrow">Product range</p>
+          <h1>Paint systems shaped around real wall needs.</h1>
+          <p class="lead">
+            Explore the Wall King range across interior finishes, exterior protection, and the preparation steps that make good results last longer.
+          </p>
+        </section>
+
+        <section class="section-block product-intro reveal">
+          <article class="product-intro__card">
+            <strong>Interior</strong>
+            <span>For living spaces, bedrooms, and everyday walls.</span>
+          </article>
+          <article class="product-intro__card">
+            <strong>Exterior</strong>
+            <span>For weather-facing surfaces that need stronger hold.</span>
+          </article>
+          <article class="product-intro__card">
+            <strong>Preparation</strong>
+            <span>For smoother surfaces and better top-coat performance.</span>
+          </article>
+        </section>
+
+        <section class="section-block reveal">
+          <div class="filter-bar">
+            <div class="filter-group">
+              <button class="filter-chip is-active" type="button" data-filter="all">All Products</button>
+              <button class="filter-chip" type="button" data-filter="interior">Interior</button>
+              <button class="filter-chip" type="button" data-filter="exterior">Exterior</button>
+              <button class="filter-chip" type="button" data-filter="preparation">Preparation</button>
+            </div>
+            <p class="filter-summary" id="productsSummary">0 products shown</p>
           </div>
-          <p class="filter-summary" id="productsSummary">0 products shown</p>
-        </div>
 
-        <div class="catalog-grid" id="productsGrid"></div>
-      </section>
-    </main>
+          <div class="catalog-grid" id="productsGrid"></div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <div>
+        <strong>Wall King Paints</strong>
+        <p>Practical systems for smoother surfaces, longer-lasting finishes, and more confident product selection.</p>
+      </div>
+      <div class="site-footer__links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </footer>
   </div>
 
   <script src="products-data.js"></script>

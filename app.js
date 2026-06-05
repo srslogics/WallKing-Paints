@@ -3,6 +3,39 @@
   const currentPage = document.body.dataset.page || "";
   const menuToggle = document.querySelector(".menu-toggle");
   const siteNav = document.getElementById("siteNav");
+  const roomData = [
+    "Living Room",
+    "Bedroom",
+    "Kitchen",
+    "Bathroom",
+    "Dining Room",
+    "Children's Room",
+    "Hallway",
+    "Home Office"
+  ];
+  const paletteData = [
+    { name: "Soft Sand", mood: "Warm neutral comfort", color: "#ead9bf" },
+    { name: "Morning Sky", mood: "Open and airy calm", color: "#bfdcf3" },
+    { name: "Leaf Mist", mood: "Fresh everyday ease", color: "#cedfce" },
+    { name: "Clay Glow", mood: "Inviting accent warmth", color: "#dfac81" }
+  ];
+  const adviceData = [
+    {
+      tag: "Choosing colour",
+      title: "Use lighter tones to help compact rooms feel more open.",
+      copy: "Soft neutrals and clear off-whites reflect light better and make everyday family spaces feel more generous."
+    },
+    {
+      tag: "Prep first",
+      title: "A better finish usually starts before the finish coat.",
+      copy: "Primer and putty help walls level out, hold colour more evenly, and improve the final look of emulsion coats."
+    },
+    {
+      tag: "Exterior care",
+      title: "Match outside walls with a system that can handle weather shifts.",
+      copy: "Exterior primer plus exterior emulsion gives better hold for surfaces facing sun, rain, and dust exposure."
+    }
+  ];
 
   function setupMenu() {
     if (!menuToggle || !siteNav) {
@@ -36,6 +69,7 @@
 
   function productCardMarkup(product, compact) {
     const classes = compact ? "catalog-card catalog-card--compact" : "catalog-card";
+
     return `
       <article class="${classes}">
         <a class="catalog-card__media" href="product.html?slug=${product.slug}">
@@ -49,7 +83,7 @@
             <span>${product.pack}</span>
             <span>${product.finish}</span>
           </div>
-          <a class="text-link" href="product.html?slug=${product.slug}">View product profile</a>
+          <a class="text-link" href="product.html?slug=${product.slug}">View details</a>
         </div>
       </article>
     `;
@@ -57,33 +91,38 @@
 
   function renderHomePage() {
     const heroSignatureProduct = document.getElementById("heroSignatureProduct");
-    const heroRibbon = document.getElementById("heroRibbon");
     const featuredShowcase = document.getElementById("featuredShowcase");
+    const roomChips = document.getElementById("roomChips");
+    const swatchGrid = document.getElementById("swatchGrid");
+    const adviceGrid = document.getElementById("adviceGrid");
     const signatureProduct = productData.find((product) => product.slug === "interior-emulsion") || productData[0];
 
-    if (heroSignatureProduct) {
+    if (heroSignatureProduct && signatureProduct) {
       heroSignatureProduct.innerHTML = `
         <article class="signature-card">
-          <div class="signature-card__media">
-            <img src="${signatureProduct.image}" alt="${signatureProduct.name}">
-          </div>
-          <div class="signature-card__body">
+          <img src="${signatureProduct.image}" alt="${signatureProduct.name}">
+          <div>
             <span class="pill">${signatureProduct.category}</span>
             <h3>${signatureProduct.name}</h3>
             <p>${signatureProduct.shortCopy}</p>
-            <a class="text-link" href="product.html?slug=${signatureProduct.slug}">Open product overview</a>
           </div>
         </article>
       `;
     }
 
-    if (heroRibbon) {
-      heroRibbon.innerHTML = productData.slice(0, 3).map((product) => `
-        <article class="ribbon-card">
-          <img src="${product.image}" alt="${product.name}">
-          <div>
-            <span>${product.name}</span>
-            <small>${product.finish}</small>
+    if (roomChips) {
+      roomChips.innerHTML = roomData.map((room) => `
+        <a class="room-chip" href="products.html?filter=${room === "Bathroom" ? "exterior" : "interior"}">${room}</a>
+      `).join("");
+    }
+
+    if (swatchGrid) {
+      swatchGrid.innerHTML = paletteData.map((swatch) => `
+        <article class="swatch-card">
+          <div class="swatch-card__tone" style="background:${swatch.color};"></div>
+          <div class="swatch-card__label">
+            <strong>${swatch.name}</strong>
+            <span>${swatch.mood}</span>
           </div>
         </article>
       `).join("");
@@ -103,8 +142,18 @@
               <span>${product.pack}</span>
               <span>${product.finish}</span>
             </div>
-            <a class="text-link" href="product.html?slug=${product.slug}">View product profile</a>
+            <a class="text-link" href="product.html?slug=${product.slug}">Open product profile</a>
           </div>
+        </article>
+      `).join("");
+    }
+
+    if (adviceGrid) {
+      adviceGrid.innerHTML = adviceData.map((item) => `
+        <article class="advice-card reveal">
+          <span class="advice-card__tag">${item.tag}</span>
+          <h3>${item.title}</h3>
+          <p>${item.copy}</p>
         </article>
       `).join("");
     }
@@ -126,12 +175,12 @@
       if (activeFilter === "all") {
         return true;
       }
+
       return product.family === activeFilter;
     }
 
     function updateProducts() {
       const filtered = productData.filter(matchesFilter);
-
       productsGrid.innerHTML = filtered.map((product) => productCardMarkup(product, false)).join("");
 
       if (productsSummary) {
@@ -159,7 +208,7 @@
     const productRoot = document.getElementById("productPage");
     const relatedRoot = document.getElementById("relatedProducts");
 
-    if (!productRoot) {
+    if (!productRoot || !product) {
       return;
     }
 
@@ -186,8 +235,8 @@
 
       <section class="product-layout">
         <article class="detail-panel reveal">
-          <p class="eyebrow">Design Intent</p>
-          <h2>Where this finish belongs</h2>
+          <p class="eyebrow">Best for</p>
+          <h2>Where this product works best</h2>
           <p>${product.spotlight}</p>
           <ul class="detail-list">
             ${product.features.map((feature) => `<li>${feature}</li>`).join("")}
@@ -195,22 +244,22 @@
         </article>
 
         <article class="detail-panel detail-panel--dark reveal">
-          <p class="eyebrow">Specification Dossier</p>
-          <h2>Technical snapshot</h2>
+          <p class="eyebrow">Technical overview</p>
+          <h2>Key specification details</h2>
           <div class="spec-grid">
-            <div><span>Pack Range</span><strong>${product.pack}</strong></div>
+            <div><span>Pack range</span><strong>${product.pack}</strong></div>
             <div><span>Finish</span><strong>${product.finish}</strong></div>
-            <div><span>Surface Dry</span><strong>${product.surfaceDry}</strong></div>
-            <div><span>Re-Coat</span><strong>${product.recoat}</strong></div>
+            <div><span>Surface dry</span><strong>${product.surfaceDry}</strong></div>
+            <div><span>Re-coat</span><strong>${product.recoat}</strong></div>
             <div><span>Coverage</span><strong>${product.coverage}</strong></div>
-            <div><span>Recommended Use</span><strong>${product.recommendedSurface}</strong></div>
+            <div><span>Recommended use</span><strong>${product.recommendedSurface}</strong></div>
           </div>
         </article>
       </section>
 
       <section class="section-block process-strip reveal">
         <div>
-          <p class="eyebrow">Application Ritual</p>
+          <p class="eyebrow">How to use it</p>
           <h2>${product.processTitle}</h2>
         </div>
         <ol class="process-list">
