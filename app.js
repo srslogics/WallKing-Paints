@@ -71,7 +71,7 @@
             <span class="pill">${signatureProduct.category}</span>
             <h3>${signatureProduct.name}</h3>
             <p>${signatureProduct.shortCopy}</p>
-            <a class="text-link" href="product.html?slug=${signatureProduct.slug}">Enter signature profile</a>
+            <a class="text-link" href="product.html?slug=${signatureProduct.slug}">Open product overview</a>
           </div>
         </article>
       `;

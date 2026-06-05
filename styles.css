@@ -103,7 +103,7 @@ button {
   border-radius: 16px;
   background: linear-gradient(135deg, var(--gold), var(--orange));
   color: #20150f;
-  font-family: "Bodoni Moda", serif;
+  font-family: "Sora", sans-serif;
   font-size: 1rem;
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -118,7 +118,7 @@ h3,
 .header-cta,
 .filter-chip,
 .pill {
-  font-family: "Bodoni Moda", serif;
+  font-family: "Sora", sans-serif;
 }
 
 .brand__text strong {
@@ -216,8 +216,8 @@ h1,
 h2,
 h3 {
   margin: 0;
-  letter-spacing: -0.03em;
-  line-height: 0.92;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
   font-weight: 700;
 }
 
@@ -304,7 +304,7 @@ h3 {
   display: inline-block;
   margin-bottom: 10px;
   color: var(--gold);
-  font-family: "Bodoni Moda", serif;
+  font-family: "Sora", sans-serif;
   font-size: 0.86rem;
 }
 
@@ -617,10 +617,11 @@ h3 {
   min-height: 34px;
   padding: 0 12px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(111, 79, 47, 0.12);
+  background: rgba(255, 255, 255, 0.68);
   color: var(--gold);
-  font-size: 0.76rem;
+  font-size: 0.72rem;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -810,7 +811,8 @@ h3 {
   display: inline-block;
   margin-bottom: 8px;
   color: var(--gold);
-  font-family: "Bodoni Moda", serif;
+  font-family: "Sora", sans-serif;
+  font-weight: 700;
 }
 
 .composition-metrics span {
