@@ -12,18 +12,12 @@
 </head>
 <body data-page="about">
   <div class="page-shell">
-    <header class="topbar">
-      <p>Built on local manufacturing roots and practical paint knowledge.</p>
-      <div class="topbar__actions">
-        <a href="products.html">View range</a>
-        <a href="contact.html">Contact team</a>
-      </div>
-    </header>
-
     <div class="page-frame">
       <header class="site-header">
         <a class="brand" href="index.html" aria-label="Wall King home">
-          <span class="brand__mark">WK</span>
+          <span class="brand__mark brand__mark--image">
+            <img src="assets/images/logo.jpeg" alt="Wall King logo">
+          </span>
           <span class="brand__text">
             <strong>Wall King</strong>
             <small>Paints & Coatings</small>
@@ -35,13 +29,38 @@
         </button>
 
         <nav class="site-nav" id="siteNav">
-          <a href="index.html" data-nav="home">Home</a>
-          <a href="products.html" data-nav="products">Products</a>
-          <a href="about.html" data-nav="about">About</a>
-          <a href="contact.html" data-nav="contact">Contact</a>
+          <div class="nav-mega">
+            <a href="products.html" data-nav="products">Products</a>
+            <div class="nav-mega__panel">
+              <a class="nav-mega__item" href="products.html?filter=interior">
+                <img src="assets/images/interior-silky-shiny.jpeg" alt="Interior Paints">
+                <span>Interior Paints</span>
+              </a>
+              <a class="nav-mega__item" href="products.html?filter=exterior">
+                <img src="assets/images/exterior-perfect.jpeg" alt="Exterior Paints">
+                <span>Exterior Paints</span>
+              </a>
+              <a class="nav-mega__item" href="products.html?filter=waterproofing">
+                <img src="assets/images/elasto-shield.jpeg" alt="Waterproofing">
+                <span>Waterproofing Systems</span>
+              </a>
+              <a class="nav-mega__item" href="products.html?filter=preparation">
+                <img src="assets/images/prince-primer.jpeg" alt="Primers and Putties">
+                <span>Putties & Primers</span>
+              </a>
+              <a class="nav-mega__item" href="products.html?filter=specialty">
+                <img src="assets/images/prince-enamel-can.jpeg" alt="Enamels">
+                <span>Enamels</span>
+              </a>
+              <a class="nav-mega__item" href="products.html?filter=specialty">
+                <img src="assets/images/tile-adhesive.jpeg" alt="Other Products">
+                <span>Other Products</span>
+              </a>
+            </div>
+          </div>
+          <a href="index.html#colour-guide" data-nav="home">Get Inspired</a>
+          <a href="contact.html" data-nav="contact">Contact Us</a>
         </nav>
-
-        <a class="header-cta" href="contact.html">Talk to an expert</a>
       </header>
 
       <main>
@@ -92,15 +111,56 @@
       </main>
     </div>
 
-    <footer class="site-footer">
-      <div>
-        <strong>Wall King Paints</strong>
-        <p>Better walls begin with the right system, the right advice, and the confidence to choose well.</p>
+    <footer class="site-footer site-footer--indigo">
+      <section class="footer-newsletter">
+        <div class="footer-newsletter__copy">
+          <h2>Stay connected with Wall King.</h2>
+          <p>Get updates on products, dealer support, and the next stage of Wall King’s growth.</p>
+        </div>
+        <form class="footer-newsletter__form">
+          <input type="email" placeholder="Your Email">
+          <button class="button" type="button">Subscribe</button>
+        </form>
+      </section>
+
+      <div class="site-footer__grid">
+        <div class="site-footer__column">
+          <strong>Company</strong>
+          <a href="about.html">Brand Story</a>
+          <a href="about.html">Philosophy</a>
+          <a href="contact.html">Dealer Network</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="site-footer__column">
+          <strong>Paints</strong>
+          <a href="products.html?filter=interior">Interior Emulsions</a>
+          <a href="products.html?filter=exterior">Exterior Emulsions</a>
+          <a href="products.html?filter=waterproofing">Waterproofing Systems</a>
+          <a href="products.html?filter=specialty">Enamels</a>
+        </div>
+        <div class="site-footer__column">
+          <strong>Preparation</strong>
+          <a href="products.html?filter=preparation">Putties & Primers</a>
+          <a href="products.html?filter=preparation">Crack Repair</a>
+          <a href="products.html?filter=specialty">Tile Adhesive</a>
+          <a href="contact.html">Technical Help</a>
+        </div>
+        <div class="site-footer__column">
+          <strong>Explore</strong>
+          <a href="index.html#colour-guide">Colour Guide</a>
+          <a href="contact.html">Find a Dealer</a>
+          <a href="health.html">Health & Safety</a>
+          <a href="contact.html">Support</a>
+        </div>
       </div>
-      <div class="site-footer__links">
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="contact.html">Contact</a>
+
+      <div class="site-footer__bottom">
+        <p>&copy; 2026 Wall King Paints. All rights reserved.</p>
+        <div class="site-footer__socials">
+          <a href="contact.html">Instagram</a>
+          <a href="contact.html">YouTube</a>
+          <a href="contact.html">Facebook</a>
+        </div>
       </div>
     </footer>
   </div>

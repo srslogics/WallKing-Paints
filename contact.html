@@ -12,18 +12,12 @@
 </head>
 <body data-page="contact">
   <div class="page-shell">
-    <header class="topbar">
-      <p>Speak with Wall King for product help, dealer support, or project guidance.</p>
-      <div class="topbar__actions">
-        <a href="products.html">Product range</a>
-        <a href="about.html">Our story</a>
-      </div>
-    </header>
-
     <div class="page-frame">
       <header class="site-header">
         <a class="brand" href="index.html" aria-label="Wall King home">
-          <span class="brand__mark">WK</span>
+          <span class="brand__mark brand__mark--image">
+            <img src="assets/images/logo.jpeg" alt="Wall King logo">
+          </span>
           <span class="brand__text">
             <strong>Wall King</strong>
             <small>Paints & Coatings</small>
@@ -35,73 +29,190 @@
         </button>
 
         <nav class="site-nav" id="siteNav">
-          <a href="index.html" data-nav="home">Home</a>
-          <a href="products.html" data-nav="products">Products</a>
-          <a href="about.html" data-nav="about">About</a>
-          <a href="contact.html" data-nav="contact">Contact</a>
+          <div class="nav-mega">
+            <a href="products.html" data-nav="products">Products</a>
+            <div class="nav-mega__panel">
+              <a class="nav-mega__item" href="products.html?filter=interior">
+                <img src="assets/images/interior-silky-shiny.jpeg" alt="Interior Paints">
+                <span>Interior Paints</span>
+              </a>
+              <a class="nav-mega__item" href="products.html?filter=exterior">
+                <img src="assets/images/exterior-perfect.jpeg" alt="Exterior Paints">
+                <span>Exterior Paints</span>
+              </a>
+              <a class="nav-mega__item" href="products.html?filter=waterproofing">
+                <img src="assets/images/elasto-shield.jpeg" alt="Waterproofing">
+                <span>Waterproofing Systems</span>
+              </a>
+              <a class="nav-mega__item" href="products.html?filter=preparation">
+                <img src="assets/images/prince-primer.jpeg" alt="Primers and Putties">
+                <span>Putties & Primers</span>
+              </a>
+              <a class="nav-mega__item" href="products.html?filter=specialty">
+                <img src="assets/images/prince-enamel-can.jpeg" alt="Enamels">
+                <span>Enamels</span>
+              </a>
+              <a class="nav-mega__item" href="products.html?filter=specialty">
+                <img src="assets/images/tile-adhesive.jpeg" alt="Other Products">
+                <span>Other Products</span>
+              </a>
+            </div>
+          </div>
+          <a href="index.html#colour-guide" data-nav="home">Get Inspired</a>
+          <a href="contact.html" data-nav="contact">Contact Us</a>
         </nav>
-
-        <a class="header-cta" href="tel:+917714916266">Call now</a>
       </header>
 
       <main>
-        <section class="page-hero reveal">
-          <p class="eyebrow">Contact us</p>
-          <h1>Let’s help you choose the right paint system for the job.</h1>
-          <p class="lead">
-            Whether you are painting a home, restocking as a dealer, or planning a site requirement, Wall King can guide you to the right category and finish.
-          </p>
+        <section class="contact-landing reveal">
+          <div class="contact-landing__copy">
+            <p class="eyebrow">Contact us</p>
+            <h1>Let’s help you choose the right paint system for the job.</h1>
+            <p class="lead">
+              Whether you are painting a home, restocking as a dealer, or planning a site requirement, Wall King can guide you to the right category and finish.
+            </p>
+          </div>
+          <div class="contact-landing__panel">
+            <div class="contact-landing__stat">
+              <span>Call us</span>
+              <strong>+91 771 4916266</strong>
+            </div>
+            <div class="contact-landing__stat">
+              <span>Email</span>
+              <strong>walkingpaint@gmail.com</strong>
+            </div>
+            <div class="contact-landing__stat">
+              <span>Location</span>
+              <strong>Bhanpuri Industrial Area, Raipur</strong>
+            </div>
+          </div>
         </section>
 
-        <section class="section-block contact-grid">
-          <article class="detail-panel reveal">
+        <section class="contact-enquiry reveal">
+          <div class="contact-enquiry__intro">
+            <h2>Get In Touch</h2>
+            <p>Share your requirement and the Wall King team will help with product guidance, dealer support, and site enquiries.</p>
+          </div>
+          <form class="contact-enquiry__form">
+            <label>
+              <span>Name*</span>
+              <input type="text" placeholder="">
+            </label>
+            <label>
+              <span>Mobile Number*</span>
+              <input type="tel" placeholder="">
+            </label>
+            <label>
+              <span>Email Id*</span>
+              <input type="email" placeholder="">
+            </label>
+            <label>
+              <span>State*</span>
+              <select>
+                <option>Chhattisgarh</option>
+                <option>Maharashtra</option>
+                <option>Madhya Pradesh</option>
+                <option>Odisha</option>
+              </select>
+            </label>
+            <label>
+              <span>City*</span>
+              <select>
+                <option>Raipur</option>
+                <option>Bhilai</option>
+                <option>Durg</option>
+                <option>Nagpur</option>
+              </select>
+            </label>
+            <label>
+              <span>Contacting us for*</span>
+              <select>
+                <option>Product Enquiry</option>
+                <option>Dealership Support</option>
+                <option>Project Requirement</option>
+                <option>Technical Help</option>
+              </select>
+            </label>
+            <p class="contact-enquiry__note">Our team will review your enquiry and get back to you as soon as possible.</p>
+            <button class="button contact-enquiry__submit" type="button">Submit</button>
+          </form>
+        </section>
+
+        <section class="contact-direct reveal">
+          <article class="contact-direct__card">
             <p class="eyebrow">Call or email</p>
             <h2>Talk to the team directly.</h2>
-            <div class="contact-stack">
+            <div class="contact-direct__actions">
               <a class="button button--primary" href="tel:+917714916266">+91 771 4916266</a>
               <a class="button button--ghost" href="mailto:walkingpaint@gmail.com">walkingpaint@gmail.com</a>
             </div>
-            <p class="contact-copy">
-              Ideal for dealer onboarding, product selection help, and general sales enquiries.
-            </p>
+            <p>Ideal for dealer onboarding, product selection help, and general sales enquiries.</p>
           </article>
 
-          <article class="detail-panel detail-panel--dark reveal">
+          <article class="contact-direct__card contact-direct__card--soft">
             <p class="eyebrow">Visit or write to us</p>
             <h2>Bhanpuri Industrial Area, Raipur</h2>
-            <div class="address-card">
+            <div class="contact-direct__address">
               <strong>Wall King Paints & Coating</strong>
               <span>Bhanpuri Industrial Area</span>
               <span>Raipur, Chhattisgarh 493221</span>
             </div>
-            <p class="contact-copy">
-              Best suited for distribution conversations, local project coordination, and business visits.
-            </p>
+            <p>Best suited for distribution conversations, local project coordination, and business visits.</p>
           </article>
-        </section>
-
-        <section class="section-block cta-slab reveal">
-          <div>
-            <p class="eyebrow">Need product details?</p>
-            <h2>Browse the product catalogue and open the finish profile that matches your wall requirement.</h2>
-          </div>
-          <div class="cta-slab__actions">
-            <a class="button button--primary" href="products.html">Browse products</a>
-            <a class="button button--ghost" href="product.html?slug=interior-emulsion">View a sample product</a>
-          </div>
         </section>
       </main>
     </div>
 
-    <footer class="site-footer">
-      <div>
-        <strong>Wall King Paints</strong>
-        <p>Helpful support for interior finishes, exterior systems, and dependable paint selection.</p>
+    <footer class="site-footer site-footer--indigo">
+      <section class="footer-newsletter">
+        <div class="footer-newsletter__copy">
+          <h2>Need a quick response?</h2>
+          <p>Share your email and Wall King will get back to you for dealer support, product guidance, and project requirements.</p>
+        </div>
+        <form class="footer-newsletter__form">
+          <input type="email" placeholder="Your Email">
+          <button class="button" type="button">Submit</button>
+        </form>
+      </section>
+
+      <div class="site-footer__grid">
+        <div class="site-footer__column">
+          <strong>Company</strong>
+          <a href="about.html">Brand Story</a>
+          <a href="about.html">Philosophy</a>
+          <a href="contact.html">Dealer Network</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="site-footer__column">
+          <strong>Paints</strong>
+          <a href="products.html?filter=interior">Interior Emulsions</a>
+          <a href="products.html?filter=exterior">Exterior Emulsions</a>
+          <a href="products.html?filter=waterproofing">Waterproofing Systems</a>
+          <a href="products.html?filter=specialty">Enamels</a>
+        </div>
+        <div class="site-footer__column">
+          <strong>Preparation</strong>
+          <a href="products.html?filter=preparation">Putties & Primers</a>
+          <a href="products.html?filter=preparation">Crack Repair</a>
+          <a href="products.html?filter=specialty">Tile Adhesive</a>
+          <a href="contact.html">Technical Help</a>
+        </div>
+        <div class="site-footer__column">
+          <strong>Explore</strong>
+          <a href="index.html#colour-guide">Colour Guide</a>
+          <a href="contact.html">Find a Dealer</a>
+          <a href="health.html">Health & Safety</a>
+          <a href="contact.html">Support</a>
+        </div>
       </div>
-      <div class="site-footer__links">
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="about.html">About</a>
+
+      <div class="site-footer__bottom">
+        <p>&copy; 2026 Wall King Paints. All rights reserved.</p>
+        <div class="site-footer__socials">
+          <a href="contact.html">Instagram</a>
+          <a href="contact.html">YouTube</a>
+          <a href="contact.html">Facebook</a>
+        </div>
       </div>
     </footer>
   </div>
