@@ -139,23 +139,6 @@
       linkLabel: "Explore preparation"
     }
   ];
-  const journalData = [
-    {
-      tag: "Interior Guide",
-      title: "Choose interior emulsions after the surface feels properly prepared.",
-      copy: "Start with primer and putty, then move into an interior finish that suits the room's lighting, daily use, and cleaning needs."
-    },
-    {
-      tag: "Exterior Guide",
-      title: "Choose exterior systems that stay clearer through sun, rain, and dust.",
-      copy: "For outside walls, match the base preparation and top coat properly so the finish holds colour and reads sharper from the street."
-    },
-    {
-      tag: "Waterproofing Guide",
-      title: "Choose waterproofing first when damp protection matters more than colour.",
-      copy: "Use a protection-led system when terraces, seepage-prone walls, or moisture-heavy areas need stronger defense before decoration."
-    }
-  ];
   const heroCampaignData = {
     "elasto-shield": {
       title: "Elasto Shield Waterproofing",
@@ -192,32 +175,32 @@
       cardSurface: "linear-gradient(180deg, #617fd3 0%, #617fd3 70%, #5574c8 70%, #5574c8 100%)",
       railSurface: "#617fd3",
       detailSurface: "linear-gradient(180deg, #eff3fb 0%, #e7edf9 100%)",
-      categoryStage: "linear-gradient(180deg, #eef3ff 0%, #e4ebfb 100%)",
-      categoryVisual: "linear-gradient(180deg, rgba(97, 127, 211, 0.96) 0%, rgba(97, 127, 211, 0.96) 70%, rgba(85, 116, 200, 0.96) 70%, rgba(85, 116, 200, 0.96) 100%)",
+      categoryStage: "linear-gradient(135deg, #edf2ff 0%, #e8eeff 48%, #e3eaff 100%)",
+      categoryVisual: "linear-gradient(180deg, rgba(99, 128, 212, 0.82) 0%, rgba(92, 121, 204, 0.82) 100%)",
       shadow: "rgba(48, 74, 129, 0.18)"
     },
     "perfect-exterior-emulsion": {
       cardSurface: "linear-gradient(180deg, #5d7fd1 0%, #5d7fd1 70%, #5274c7 70%, #5274c7 100%)",
       railSurface: "#5d7fd1",
       detailSurface: "linear-gradient(180deg, #edf2fb 0%, #e4ebf8 100%)",
-      categoryStage: "linear-gradient(180deg, #e8eefc 0%, #dde6fb 100%)",
-      categoryVisual: "linear-gradient(180deg, rgba(93, 127, 209, 0.96) 0%, rgba(93, 127, 209, 0.96) 70%, rgba(82, 116, 199, 0.96) 70%, rgba(82, 116, 199, 0.96) 100%)",
+      categoryStage: "linear-gradient(135deg, #eef3ff 0%, #e7eeff 52%, #e0e8fb 100%)",
+      categoryVisual: "linear-gradient(180deg, rgba(92, 123, 206, 0.82) 0%, rgba(85, 117, 199, 0.82) 100%)",
       shadow: "rgba(48, 74, 129, 0.18)"
     },
     "elasto-shield": {
       cardSurface: "linear-gradient(180deg, #efefef 0%, #efefef 74%, #dcd6cf 74%, #dcd6cf 100%)",
       railSurface: "#efefef",
       detailSurface: "linear-gradient(180deg, #f3f4f5 0%, #ece9e4 100%)",
-      categoryStage: "linear-gradient(180deg, #f2f3f5 0%, #eaedf1 100%)",
-      categoryVisual: "linear-gradient(180deg, rgba(239, 239, 239, 0.96) 0%, rgba(239, 239, 239, 0.96) 74%, rgba(220, 214, 207, 0.96) 74%, rgba(220, 214, 207, 0.96) 100%)",
+      categoryStage: "linear-gradient(135deg, #f4f6f9 0%, #eef1f5 54%, #e7ebf0 100%)",
+      categoryVisual: "linear-gradient(180deg, rgba(231, 234, 239, 0.88) 0%, rgba(223, 227, 233, 0.88) 100%)",
       shadow: "rgba(104, 97, 89, 0.16)"
     },
     "prince-primer": {
       cardSurface: "linear-gradient(180deg, #d3d3d3 0%, #d3d3d3 100%)",
       railSurface: "#d3d3d3",
       detailSurface: "linear-gradient(180deg, #edf4fc 0%, #e5edf7 100%)",
-      categoryStage: "linear-gradient(180deg, #eef3fb 0%, #e6edf7 100%)",
-      categoryVisual: "linear-gradient(180deg, rgba(211, 211, 211, 0.96) 0%, rgba(211, 211, 211, 0.96) 100%)",
+      categoryStage: "linear-gradient(135deg, #eef4fb 0%, #e7eef8 56%, #e0e7f1 100%)",
+      categoryVisual: "linear-gradient(180deg, rgba(213, 221, 231, 0.84) 0%, rgba(204, 214, 226, 0.84) 100%)",
       shadow: "rgba(107, 107, 107, 0.14)"
     },
     "damp-care-putty": {
@@ -339,11 +322,10 @@
     const colourGuidePaletteDots = document.getElementById("colourGuidePaletteDots");
     const colourGuideSwatches = document.getElementById("colourGuideSwatches");
     const colourRoomPreview = document.getElementById("colourRoomPreview");
-    const journalGrid = document.getElementById("journalGrid");
     const heroPackshot = document.getElementById("heroPackshot");
     const heroTitle = document.getElementById("heroTitle");
     const heroSubtitle = document.getElementById("heroSubtitle");
-    const heroRoot = document.querySelector(".indigo-hero");
+    const heroRoot = document.querySelector(".framer-hero");
     const heroProducts = [
       "elasto-shield",
       "interior-silky-shiny",
@@ -352,8 +334,20 @@
     ].map((slug) => productData.find((product) => product.slug === slug)).filter(Boolean);
     let activeHeroIndex = 0;
 
-    function heroCardMarkup(product) {
-      return "";
+    function heroCardMarkup(product, index) {
+      const campaign = heroCampaignData[product.slug] || {};
+      return `
+        <button
+          class="hero-showcase-card ${index === activeHeroIndex ? "is-active" : ""}"
+          type="button"
+          data-slide-index="${index}"
+          style="--hero-card-surface:${campaign.packPanel || "linear-gradient(180deg, #eef6ff 0%, #d7e9fb 100%)"};"
+        >
+          <span class="hero-showcase-card__eyebrow">${product.category}</span>
+          <strong>${product.name}</strong>
+          <span>${campaign.subtitle || product.shortCopy}</span>
+        </button>
+      `;
     }
 
     function renderHeroSlide() {
@@ -361,9 +355,14 @@
         return;
       }
 
-      heroSlider.innerHTML = heroCardMarkup(heroProducts[activeHeroIndex]);
+      heroSlider.innerHTML = heroProducts.map((product, index) => heroCardMarkup(product, index)).join("");
       if (heroPackshot) {
-        heroPackshot.innerHTML = `<img src="${heroProducts[activeHeroIndex].image}" alt="${heroProducts[activeHeroIndex].name}">`;
+        heroPackshot.innerHTML = `
+          <article class="hero-pack-card">
+            <span class="hero-pack-card__pill">${heroProducts[activeHeroIndex].category}</span>
+            <img src="${heroProducts[activeHeroIndex].image}" alt="${heroProducts[activeHeroIndex].name}">
+          </article>
+        `;
       }
 
       if (heroRoot) {
@@ -377,6 +376,15 @@
         const campaign = heroCampaignData[heroProducts[activeHeroIndex].slug] || {};
         heroTitle.textContent = campaign.title || heroProducts[activeHeroIndex].name;
         heroSubtitle.textContent = campaign.subtitle || heroProducts[activeHeroIndex].shortCopy;
+      }
+
+      if (heroSlider) {
+        heroSlider.querySelectorAll("[data-slide-index]").forEach((button) => {
+          button.addEventListener("click", () => {
+            activeHeroIndex = Number(button.dataset.slideIndex || 0);
+            renderHeroSlide();
+          });
+        });
       }
 
       if (heroSliderDots) {
@@ -416,28 +424,32 @@
           filter: "interior",
           subtitle: "Bring softer, cleaner room stories to life.",
           copy: "A more premium wall finish story for living rooms, bedrooms, and everyday interior spaces.",
-          image: "interior-silky-shiny"
+          image: "interior-silky-shiny",
+          points: ["Living rooms", "Bedrooms", "Everyday walls"]
         },
         {
           title: "Exterior Emulsions",
           filter: "exterior",
           subtitle: "Shield and beautify your exteriors.",
           copy: "Stronger-looking facade finishes for weather-facing surfaces that need presence from the street.",
-          image: "perfect-exterior-emulsion"
+          image: "perfect-exterior-emulsion",
+          points: ["Facade presence", "Weather-facing", "Street impact"]
         },
         {
           title: "Waterproofing Systems",
           filter: "waterproofing",
           subtitle: "Protect roofs, terraces, and damp-prone walls.",
           copy: "Performance-led systems positioned around seepage defense, terrace care, heat reduction, and surface protection.",
-          image: "elasto-shield"
+          image: "elasto-shield",
+          points: ["Terrace care", "Damp defense", "Surface protection"]
         },
         {
           title: "Primers & Putties",
           filter: "preparation",
           subtitle: "Start with a stronger surface before the top coat.",
           copy: "Preparation-first products that help the final finish look smoother, cleaner, and more dependable.",
-          image: "prince-primer"
+          image: "prince-primer",
+          points: ["Surface prep", "Smoother finish", "Base coat"]
         }
       ];
 
@@ -455,16 +467,26 @@
               </button>
             `).join("")}
           </div>
-          <article class="category-feature__stage" style="background:${theme.categoryStage};">
+          <article class="category-feature__stage" style="--category-stage:${theme.categoryStage}; --category-visual:${theme.categoryVisual}; --category-shadow:${theme.shadow};">
             <div class="category-feature__copy">
+              <span class="category-feature__eyebrow">Signature system</span>
               <h3>${activeCategory.title}</h3>
               <p class="category-feature__subtitle">${activeCategory.subtitle}</p>
               <p class="category-feature__detail">${activeCategory.copy}</p>
+              <div class="category-feature__meta">
+                ${activeCategory.points.map((point) => `<span>${point}</span>`).join("")}
+              </div>
               <a class="button button--ghost" href="products.html?filter=${activeCategory.filter}">Explore category</a>
             </div>
             <div class="category-feature__visual">
+              <div class="category-feature__halo" aria-hidden="true"></div>
               <div class="category-feature__pack" style="--pack-shadow:${theme.shadow};">
                 <img src="${product.image}" alt="${product.name}">
+              </div>
+              <div class="category-feature__note">
+                <span>${product.category}</span>
+                <strong>${product.name}</strong>
+                <small>${product.pack}</small>
               </div>
             </div>
           </article>
@@ -502,12 +524,19 @@
       }
 
       function renderGuide() {
+        const swatchA = swatchLookup(activeGuide.swatches[0]) || paletteData[0];
+        const swatchB = swatchLookup(activeGuide.swatches[1]) || paletteData[1];
+        const swatchC = swatchLookup(activeGuide.swatches[2]) || paletteData[2];
+
         colourGuideTitle.textContent = activeGuide.title;
         colourGuideCopy.textContent = activeGuide.copy;
-        colourGuideName.textContent = activeGuide.swatches[0] || activeGuide.title;
+        colourGuideName.textContent = swatchA.name || activeGuide.title;
         colourGuideCode.textContent = activeGuide.code || "WK-000";
         colourRoomPreview.style.setProperty("--guide-wall", activeGuide.heroColor || "#9c907d");
         colourRoomPreview.style.setProperty("--guide-accent", activeGuide.accentColor || "#c12674");
+        colourRoomPreview.style.setProperty("--guide-tone-1", swatchA.color || "#ead9bf");
+        colourRoomPreview.style.setProperty("--guide-tone-2", swatchB.color || "#bfdcf3");
+        colourRoomPreview.style.setProperty("--guide-tone-3", swatchC.color || "#cedfce");
 
         colourGuidePaletteDots.innerHTML = activeGuide.swatches.map((name) => {
           const swatch = swatchLookup(name);
@@ -559,21 +588,11 @@
       renderGuide();
     }
 
-    if (journalGrid) {
-      journalGrid.innerHTML = journalData.map((item) => `
-        <article class="journal-card">
-          <span class="journal-card__tag">${item.tag}</span>
-          <h3>${item.title}</h3>
-          <p>${item.copy}</p>
-          <a class="text-link" href="contact.html">Learn more</a>
-        </article>
-      `).join("");
-    }
-
   }
 
   function renderProductsPage() {
     const productsCategoryNav = document.getElementById("productsCategoryNav");
+    const productsLandingStage = document.getElementById("productsLandingStage");
     const productStories = document.getElementById("productStories");
     const productsGrid = document.getElementById("productsGrid");
     const productsSummary = document.getElementById("productsSummary");
@@ -591,7 +610,8 @@
         copy: "Wall King interior paints are presented here the way they should be sold: as a mood, a room story, and a cleaner finish for daily living spaces.",
         heroSlug: "interior-silky-shiny",
         productSlugs: ["interior-silky-shiny", "prince-primer", "crack-filler"],
-        theme: "products-story--berry"
+        theme: "products-story--berry",
+        points: ["Living spaces", "Decorative finish", "Everyday durability"]
       },
       {
         id: "exterior",
@@ -600,7 +620,8 @@
         copy: "Exterior coatings need stronger presentation than a flat grid. This section gives Wall King a proper facade-facing story with the pack leading the category.",
         heroSlug: "perfect-exterior-emulsion",
         productSlugs: ["perfect-exterior-emulsion", "elasto-shield", "prince-primer"],
-        theme: "products-story--sand"
+        theme: "products-story--sand",
+        points: ["Street presence", "Weather-facing", "Longer hold"]
       },
       {
         id: "waterproofing",
@@ -609,7 +630,8 @@
         copy: "Waterproofing now reads like a major system category, not just another product card. The category leads with protection, heat reduction, and site confidence.",
         heroSlug: "elasto-shield",
         productSlugs: ["elasto-shield", "damp-care-putty", "latex-polymer-sbr"],
-        theme: "products-story--sky"
+        theme: "products-story--sky",
+        points: ["Terrace care", "Heat reduction", "Damp defense"]
       },
       {
         id: "preparation",
@@ -618,7 +640,8 @@
         copy: "Preparation products are showcased as the base of the full paint system, helping Wall King feel more complete and more dealer-friendly.",
         heroSlug: "prince-primer",
         productSlugs: ["prince-primer", "latex-polymer-sbr", "crack-filler"],
-        theme: "products-story--mint"
+        theme: "products-story--mint",
+        points: ["Base coat", "Surface prep", "Cleaner finish"]
       },
       {
         id: "specialty",
@@ -627,7 +650,8 @@
         copy: "Enamel and tile adhesive sit together here as a practical specialist range for builders, contractors, and higher-utility requirements.",
         heroSlug: "prince-enamel",
         productSlugs: ["prince-enamel", "tile-adhesive"],
-        theme: "products-story--steel"
+        theme: "products-story--steel",
+        points: ["Utility use", "Project-ready", "Technical range"]
       }
     ];
 
@@ -654,26 +678,57 @@
       `).join("");
     }
 
+    if (productsLandingStage) {
+      const spotlightStory = storyData[1];
+      const spotlightProduct = productData.find((product) => product.slug === spotlightStory.heroSlug) || productData[0];
+      const spotlightTheme = getProductTheme(spotlightProduct);
+
+      productsLandingStage.innerHTML = `
+        <article class="products-hero-visual" style="--spotlight-stage:${spotlightTheme.categoryStage}; --spotlight-visual:${spotlightTheme.categoryVisual}; --spotlight-shadow:${spotlightTheme.shadow};">
+          <div class="products-hero-visual__backdrop" aria-hidden="true"></div>
+          <div class="products-hero-visual__halo" aria-hidden="true"></div>
+          <div class="products-hero-visual__pack">
+            <img src="${spotlightProduct.image}" alt="${spotlightProduct.name}">
+          </div>
+          <div class="products-hero-visual__note">
+            <span>Signature range</span>
+            <strong>${spotlightProduct.name}</strong>
+            <small>${spotlightStory.subtitle}</small>
+          </div>
+        </article>
+      `;
+    }
+
     if (productStories) {
       productStories.innerHTML = storyData.map((item) => {
         const heroProduct = productData.find((product) => product.slug === item.heroSlug) || productData[0];
         const showcaseProducts = item.productSlugs
           .map((slug) => productData.find((product) => product.slug === slug))
           .filter(Boolean);
+        const heroTheme = getProductTheme(heroProduct);
 
         return `
-          <section class="products-story ${item.theme} reveal" id="story-${item.id}">
+          <section class="products-story ${item.theme} reveal" id="story-${item.id}" style="--story-stage:${heroTheme.categoryStage}; --story-visual:${heroTheme.categoryVisual}; --story-shadow:${heroTheme.shadow};">
             <div class="products-story__hero">
               <div class="products-story__copy">
                 <span class="products-story__tag">${item.title}</span>
                 <h2>${item.title}</h2>
                 <p>${item.subtitle}</p>
                 <p class="products-story__detail">${item.copy}</p>
+                <div class="products-story__meta">
+                  ${item.points.map((point) => `<span>${point}</span>`).join("")}
+                </div>
                 <a class="button button--ghost" href="products.html?filter=${item.id}">Explore ${item.title}</a>
               </div>
               <div class="products-story__visual">
+                <div class="products-story__visual-halo" aria-hidden="true"></div>
                 <div class="products-story__pack">
                   <img src="${heroProduct.image}" alt="${heroProduct.name}">
+                </div>
+                <div class="products-story__note">
+                  <span>${heroProduct.category}</span>
+                  <strong>${heroProduct.name}</strong>
+                  <small>${heroProduct.pack}</small>
                 </div>
               </div>
             </div>
