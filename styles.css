@@ -1886,6 +1886,7 @@ h3 {
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 14px;
     align-items: center;
+    padding: 16px 18px;
     border-radius: 28px;
   }
 
@@ -1902,6 +1903,7 @@ h3 {
   .site-nav {
     display: none;
     grid-column: 1 / -1;
+    width: 100%;
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
@@ -5031,9 +5033,11 @@ body[data-page="contact"] .site-footer.site-footer--indigo {
 }
 
 @media (max-width: 860px) {
+  body[data-page="products"] .site-header,
   body[data-page="about"] .site-header,
   body[data-page="health"] .site-header,
   body[data-page="product"] .site-header,
+  body[data-page="contact"] .site-header,
   body[data-page="contact"] .contact-landing,
   body[data-page="contact"] .contact-enquiry,
   body[data-page="contact"] .contact-direct__card,
@@ -5050,6 +5054,78 @@ body[data-page="contact"] .site-footer.site-footer--indigo {
     padding-right: 22px;
   }
 
+  body[data-page="products"] .site-header,
+  body[data-page="about"] .site-header,
+  body[data-page="health"] .site-header,
+  body[data-page="product"] .site-header,
+  body[data-page="contact"] .site-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  body[data-page="products"] .site-nav,
+  body[data-page="about"] .site-nav,
+  body[data-page="health"] .site-nav,
+  body[data-page="product"] .site-nav,
+  body[data-page="contact"] .site-nav {
+    grid-column: 1 / -1;
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  body[data-page="products"] main,
+  body[data-page="about"] main,
+  body[data-page="health"] main,
+  body[data-page="product"] main,
+  body[data-page="contact"] main {
+    gap: 18px;
+    padding: 12px;
+  }
+
+  body[data-page="products"] .products-landing {
+    gap: 20px;
+    padding: 24px 20px;
+    border-radius: 28px;
+    background:
+      radial-gradient(circle at top left, rgba(255, 255, 255, 0.72), transparent 30%),
+      linear-gradient(180deg, rgba(244, 227, 214, 0.86) 0 46%, rgba(236, 241, 250, 0.96) 46% 100%);
+  }
+
+  body[data-page="products"] .products-landing__copy h1 {
+    max-width: 8ch;
+    font-size: clamp(2.6rem, 12vw, 4rem);
+    line-height: 0.94;
+  }
+
+  body[data-page="products"] .products-landing .lead,
+  body[data-page="contact"] .contact-landing__copy .lead,
+  body[data-page="contact"] .contact-enquiry__intro,
+  body[data-page="contact"] .contact-direct__card h2,
+  body[data-page="about"] .page-hero .lead,
+  body[data-page="health"] .page-hero .lead,
+  body[data-page="product"] .product-hero__copy .lead {
+    max-width: none;
+  }
+
+  body[data-page="products"] .products-landing__nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  body[data-page="products"] .products-landing__nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  body[data-page="products"] .products-landing .filter-chip {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
   body[data-page="about"] .timeline-card,
   body[data-page="health"] .timeline-card {
     border-right: 0;
@@ -5064,6 +5140,35 @@ body[data-page="contact"] .site-footer.site-footer--indigo {
   body[data-page="contact"] .contact-enquiry__form {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+
+  body[data-page="contact"] .contact-landing {
+    gap: 18px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    background:
+      linear-gradient(180deg, rgba(244, 227, 214, 0.84) 0 48%, rgba(236, 241, 250, 0.94) 48% 100%);
+  }
+
+  body[data-page="contact"] .contact-landing__panel {
+    padding-left: 0;
+  }
+
+  body[data-page="contact"] .contact-landing__copy h1,
+  body[data-page="about"] .page-hero h1,
+  body[data-page="health"] .page-hero h1,
+  body[data-page="product"] .product-hero__copy h1 {
+    max-width: 9ch;
+    font-size: clamp(2.5rem, 11vw, 3.9rem);
+    line-height: 0.95;
+  }
+
+  body[data-page="contact"] .contact-direct__actions {
+    display: grid;
+  }
+
+  body[data-page="contact"] .contact-direct__actions .button {
+    width: 100%;
   }
 
   body[data-page="contact"] .contact-direct__card {
@@ -5266,8 +5371,14 @@ body[data-page="contact"] .site-footer.site-footer--indigo {
     padding-right: 22px;
   }
 
+  .products-story__hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
   .products-hero-visual {
     min-height: 360px;
+    border-radius: 28px;
   }
 
   .products-hero-visual__backdrop {
@@ -5293,10 +5404,21 @@ body[data-page="contact"] .site-footer.site-footer--indigo {
 
   .products-story__visual {
     padding-top: 12px;
+    padding-bottom: 24px;
   }
 
   .products-story__copy h2 {
     font-size: clamp(2.5rem, 13vw, 4rem);
+  }
+
+  .products-story__copy > p,
+  .products-story__detail {
+    max-width: none;
+  }
+
+  .products-story__rail {
+    gap: 14px;
+    padding: 14px;
   }
 
   .story-product-card {
@@ -5310,6 +5432,25 @@ body[data-page="contact"] .site-footer.site-footer--indigo {
   .footer-newsletter__form .button {
     width: 100%;
     min-width: 0;
+  }
+
+  .footer-newsletter {
+    gap: 20px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+  .site-footer__grid {
+    gap: 24px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
+  .site-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 18px;
+    padding-bottom: 22px;
   }
 }
 
@@ -5911,6 +6052,26 @@ body[data-page="home"] .journal-card__tag {
     padding: 20px;
   }
 
+  body[data-page="home"] .range-strip {
+    gap: 18px;
+  }
+
+  .category-feature__stage,
+  .category-feature__copy,
+  .category-feature__visual {
+    grid-template-columns: 1fr;
+  }
+
+  .category-feature__visual {
+    min-height: 320px;
+  }
+
+  .category-feature__note {
+    position: static;
+    max-width: none;
+    margin-top: 14px;
+  }
+
   body[data-page="home"] .inspiration-journal .section-heading--inline,
   body[data-page="home"] .inspiration-journal .journal-grid {
     grid-template-columns: 1fr;
@@ -5923,6 +6084,16 @@ body[data-page="home"] .journal-card__tag {
 
   body[data-page="home"] .journal-card__footer {
     flex-direction: column;
+  }
+
+  .conversion-panel__actions {
+    display: grid;
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .conversion-panel__actions .button {
+    width: 100%;
   }
 
   .spotlight-card__media {
